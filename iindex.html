@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laila Nurhayati Hasibuan - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-blue: #0a192f;
+            --medium-blue: #172a45;
+            --light-blue: #64ffda;
+            --white: #e6f1ff;
+            --gray: #8892b0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Calibri', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-blue), var(--medium-blue));
+            color: var(--white);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(10, 25, 47, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--light-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-blue);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--light-blue);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .language-switcher {
+            margin-left: 20px;
+        }
+        
+        .language-switcher button {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .language-switcher button.active {
+            color: var(--light-blue);
+            font-weight: bold;
+        }
+        
+        .language-switcher button:hover {
+            color: var(--light-blue);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .hero-text h2 {
+            font-size: 1.2rem;
+            color: var(--light-blue);
+            margin-bottom: 20px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--light-blue);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--light-blue);
+            border: 1px solid var(--light-blue);
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: var(--light-blue);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .skill {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--light-blue);
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--medium-blue);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+        
+        .project-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .project-links a {
+            color: var(--light-blue);
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .project-links a:hover {
+            color: var(--white);
+        }
+        
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--light-blue);
+            border-radius: 50%;
+            margin-right: 15px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: var(--light-blue);
+            color: var(--dark-blue);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(10, 25, 47, 0.8);
+        }
+        
+        footer p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-top: 40px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="Logo LNHSB.png" alt="LNHSB Logo">
+                <h1>LNHSB</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+                    <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                    <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                    <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+                    <li class="language-switcher">
+                        <button id="en-btn" class="active">EN</button>
+                        <span>/</span>
+                        <button id="id-btn">ID</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h2 data-en="Hi, my name is" data-id="Hai, nama saya">Hi, my name is</h2>
+                <h1>Laila Nurhayati Hasibuan</h1>
+                <p data-en="I'm a Front End Developer, Game Developer, and UI/Graphic Designer from Jakarta, Indonesia."
+                   data-id="Saya seorang Pengembang Front End, Pengembang Game, dan Desainer UI/Grafis dari Jakarta, Indonesia.">
+                   I'm a Front End Developer, Game Developer, and UI/Graphic Designer from Jakarta, Indonesia.
+                </p>
+                <a href="#projects" class="btn" data-en="View My Work" data-id="Lihat Karya Saya">View My Work</a>
+            </div>
+            <div class="hero-image">
+                <img src="laila.webp" alt="Laila Nurhayati Hasibuan">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="About Me" data-id="Tentang Saya">About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-en="Get to know me" data-id="Kenali Saya">Get to know me</h3>
+                    <p data-en="I'm Laila Nurhayati Hasibuan, born in Tangerang on August 22, 2008, and currently living in Jakarta. I'm passionate about technology and design, specializing in front-end development, game development, and UI/graphic design."
+                       data-id="Saya Laila Nurhayati Hasibuan, lahir di Tangerang pada 22 Agustus 2008, dan saat ini tinggal di Jakarta. Saya memiliki minat yang besar terhadap teknologi dan desain, dengan spesialisasi dalam pengembangan front-end, pengembangan game, dan desain UI/grafis.">
+                       I'm Laila Nurhayati Hasibuan, born in Tangerang on August 22, 2008, and currently living in Jakarta. I'm passionate about technology and design, specializing in front-end development, game development, and UI/graphic design.
+                    </p>
+                    <p data-en="I enjoy creating beautiful, functional, and user-friendly digital experiences. My goal is to continue learning and growing in the tech industry while delivering high-quality work."
+                       data-id="Saya senang menciptakan pengalaman digital yang indah, fungsional, dan mudah digunakan. Tujuan saya adalah terus belajar dan berkembang di industri teknologi sambil memberikan karya berkualitas tinggi.">
+                       I enjoy creating beautiful, functional, and user-friendly digital experiences. My goal is to continue learning and growing in the tech industry while delivering high-quality work.
+                    </p>
+                    <div class="skills">
+                        <span class="skill">Front End Development</span>
+                        <span class="skill">Game Development</span>
+                        <span class="skill">UI Design</span>
+                        <span class="skill">Graphic Design</span>
+                        <span class="skill">HTML/CSS</span>
+                        <span class="skill">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="My Projects" data-id="Proyek Saya">My Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400?text=Game+Project" alt="Game Project">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="Adventure Game" data-id="Game Petualangan">Adventure Game</h3>
+                        <p data-en="A 2D adventure game developed with Unity, featuring puzzle-solving and exploration gameplay."
+                           data-id="Game petualangan 2D yang dikembangkan dengan Unity, menampilkan gameplay pemecahan teka-teki dan eksplorasi.">
+                           A 2D adventure game developed with Unity, featuring puzzle-solving and exploration gameplay.
+                        </p>
+                        <div class="project-links">
+                            <a href="#" data-en="View Demo" data-id="Lihat Demo">View Demo</a>
+                            <a href="#" data-en="Source Code" data-id="Kode Sumber">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400?text=E-commerce+UI" alt="E-commerce UI">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="E-commerce UI Design" data-id="Desain UI E-commerce">E-commerce UI Design</h3>
+                        <p data-en="Modern e-commerce website UI design with focus on user experience and clean aesthetics."
+                           data-id="Desain UI website e-commerce modern dengan fokus pada pengalaman pengguna dan estetika yang bersih.">
+                           Modern e-commerce website UI design with focus on user experience and clean aesthetics.
+                        </p>
+                        <div class="project-links">
+                            <a href="#" data-en="View Design" data-id="Lihat Desain">View Design</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400?text=Portfolio+Website" alt="Portfolio Website">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="Portfolio Website" data-id="Website Portofolio">Portfolio Website</h3>
+                        <p data-en="A responsive portfolio website built with HTML, CSS, and JavaScript to showcase creative work."
+                           data-id="Website portofolio responsif yang dibangun dengan HTML, CSS, dan JavaScript untuk memamerkan karya kreatif.">
+                           A responsive portfolio website built with HTML, CSS, and JavaScript to showcase creative work.
+                        </p>
+                        <div class="project-links">
+                            <a href="#" data-en="Visit Site" data-id="Kunjungi Situs">Visit Site</a>
+                            <a href="#" data-en="Source Code" data-id="Kode Sumber">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Get In Touch" data-id="Hubungi Saya">Get In Touch</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-en="Let's work together!" data-id="Mari bekerja bersama!">Let's work together!</h3>
+                    <p data-en="I'm currently looking for new opportunities and would love to hear from you. Whether you have a project in mind or just want to say hi, feel free to reach out."
+                       data-id="Saya saat ini mencari peluang baru dan akan senang mendengar dari Anda. Baik Anda memiliki proyek atau hanya ingin menyapa, jangan ragu untuk menghubungi.">
+                       I'm currently looking for new opportunities and would love to hear from you. Whether you have a project in mind or just want to say hi, feel free to reach out.
+                    </p>
+                    <a href="mailto:lailanurhayati59@gmail.com" class="btn" data-en="Send Email" data-id="Kirim Email">Send Email</a>
+                    <div class="social-links">
+                        <a href="https://github.com/Laschaa" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/lan8.hsb/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:lailanurhayati59@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p data-en="Designed & Built by Laila Nurhayati Hasibuan" data-id="Dirancang & Dibangun oleh Laila Nurhayati Hasibuan">
+                Designed & Built by Laila Nurhayati Hasibuan
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching functionality
+        const enBtn = document.getElementById('en-btn');
+        const idBtn = document.getElementById('id-btn');
+        const elements = document.querySelectorAll('[data-en], [data-id]');
+        
+        function switchLanguage(lang) {
+            elements.forEach(element => {
+                if (element.hasAttribute(`data-${lang}`)) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = element.getAttribute(`data-${lang}`);
+                    } else {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
+                }
+            });
+            
+            if (lang === 'en') {
+                enBtn.classList.add('active');
+                idBtn.classList.remove('active');
+            } else {
+                enBtn.classList.remove('active');
+                idBtn.classList.add('active');
+            }
+        }
+        
+        enBtn.addEventListener('click', () => switchLanguage('en'));
+        idBtn.addEventListener('click', () => switchLanguage('id'));
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Highlight active section in navigation
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY + 100;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    const sectionId = section.getAttribute('id');
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-section') === sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
